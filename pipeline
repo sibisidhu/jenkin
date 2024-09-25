@@ -1,0 +1,38 @@
+pipeline {
+    agent any  // This defines where the pipeline will run (e.g., any available agent)
+
+    stages {  // Stages define a sequence of steps
+        stage('Build') {
+            steps {
+                // Steps to build your application
+                echo 'Building...'
+                // Example: sh 'make' or bat 'build.bat' for Windows
+            }
+        }
+        
+        stage('Test') {
+            steps {
+                // Steps to test your application
+                echo 'Testing...'
+                // Example: sh 'make test'
+            }
+        }
+
+        stage('Deploy') {
+            steps {
+                // Steps to deploy your application
+                echo 'Deploying...'
+                // Example: sh 'deploy.sh'
+            }
+        }
+    }
+
+    post {  // Post actions that run after the pipeline
+        success {
+            echo 'Pipeline completed successfully!'
+        }
+        failure {
+            echo 'Pipeline failed!'
+        }
+    }
+}
